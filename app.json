@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TimerApp",
-    "slug": "TimerApp",
+    "slug": "timerapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,10 +19,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shalinisinha.timerapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ee53b495-7f74-47dc-a91f-7b4fcac5c274"
+      }
+    },
+    "owner": "shalinisinha",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/ee53b495-7f74-47dc-a91f-7b4fcac5c274"
     }
   }
 }
