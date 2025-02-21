@@ -25,17 +25,25 @@ const {theme} = useContext(ThemeContext)
   };
 
   const clearHistory = async () => {
-    Alert.alert('Confirm', 'Do you want to clear all history?', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Clear', onPress: async () => {
-          await AsyncStorage.removeItem('history');
-          setHistory([]);
-        } 
-      },
-    ]);
+    try{
+      Alert.alert('Confirm', 'Do you want to clear all history?', [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Clear', onPress: async () => {
+            await AsyncStorage.removeItem('history');
+            setHistory([]);
+          } 
+        },
+      ]);
+    }
+   
+    catch (error) {
+      console.error('AsyncStorage Error:', error);
+    }
+  
   };
 
   const exportHistory = async () => {
+  
     if (history.length === 0) {
       Alert.alert("No Data", "There is no history to export.");
       return;

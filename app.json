@@ -6,7 +6,8 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
+
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -34,8 +35,10 @@
     "runtimeVersion": {
       "policy": "appVersion"
     },
+
     "updates": {
       "url": "https://u.expo.dev/ee53b495-7f74-47dc-a91f-7b4fcac5c274"
-    }
+    },
+    "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"]
   }
 }

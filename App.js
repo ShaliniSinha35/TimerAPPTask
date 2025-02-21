@@ -1,4 +1,7 @@
 import { StyleSheet, Text, View,StatusBar } from 'react-native';
+import 'react-native-gesture-handler';
+import 'react-native-reanimated';
+
 import AppNavigation from './navigation/AppNavigation';
 import { ThemeProvider } from './Context/ThemeContext';
 

@@ -33,13 +33,22 @@ export default function TimerScreen({ navigation }) {
   }, []);
 
   const loadTimers = async () => {
-    const storedTimers = await AsyncStorage.getItem('timers');
-    if (storedTimers) setTimers(JSON.parse(storedTimers));
+    try {
+      const storedTimers = await AsyncStorage.getItem('timers');
+      if (storedTimers) setTimers(JSON.parse(storedTimers));
+    } catch (error) {
+      console.error('AsyncStorage Error:', error);
+    }
   };
-
+  
   const saveTimers = async (newTimers) => {
-    setTimers(newTimers);
-    await AsyncStorage.setItem('timers', JSON.stringify(newTimers));
+    try{
+      setTimers(newTimers);
+      await AsyncStorage.setItem('timers', JSON.stringify(newTimers));
+    }catch (error) {
+      console.error('AsyncStorage Error:', error);
+    }
+
   };
 
   const addTimer = () => {
@@ -111,12 +120,18 @@ export default function TimerScreen({ navigation }) {
   }, []);
 
   const saveToHistory = async (timer) => {
-    const newTimer= timers.filter(value=> value.id!==timer.id)
-    await AsyncStorage.setItem('timers', JSON.stringify(newTimer));
-    setTimers(newTimer)
-    const history = JSON.parse(await AsyncStorage.getItem('history')) || [];
-    const newEntry = { name: timer.name, completedAt: new Date().toLocaleString(),category:timer.category };
-    await AsyncStorage.setItem('history', JSON.stringify([newEntry, ...history]));
+    try{
+      const newTimer= timers.filter(value=> value.id!==timer.id)
+      await AsyncStorage.setItem('timers', JSON.stringify(newTimer));
+      setTimers(newTimer)
+      const history = JSON.parse(await AsyncStorage.getItem('history')) || [];
+      const newEntry = { name: timer.name, completedAt: new Date().toLocaleString(),category:timer.category };
+      await AsyncStorage.setItem('history', JSON.stringify([newEntry, ...history]));
+    }
+    catch (error) {
+      console.error('AsyncStorage Error:', error);
+    }
+  
   };
 
   const startAllTimersInCategory = (category) => {
